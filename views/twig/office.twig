@@ -1,0 +1,36 @@
+{% extends 'layouts/main.twig' %}
+{% block body %}
+
+    {% for account in accounts %}
+        <div style="text-align: right">
+            Отстаок на счете {{ account.id }} - <b>{{ account.summ }} {{ account.currency }}</b>
+        </div>
+    {% endfor %}
+
+    {% if error %}
+        <p style="margin-top: 50px; color: red;">{{ error }}</p>
+    {% else %}
+        <form style="margin-top: 50px" action="/office/charge" method="post">
+            Счет:
+            <select name="charge[account]">
+                {% for account in accounts %}
+                    <option value="{{ account.id }}">
+                        #счет:{{ account.id }} <-> {{ account.summ }} {{ account.currency }}
+                    </option>
+                {% endfor %}
+            </select><br>
+
+
+            Сумма и валюта списания:<input type="text" name="charge[summ]" placeholder="Сумма списания">
+            <select name="charge[currency]">
+                {% for currency in currencies %}
+                    <option value="{{ currency.CharCode }}">
+                        {{ currency.CharCode }}
+                    </option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="Списать">
+        </form>
+    {% endif %}
+{% endblock %}

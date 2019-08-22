@@ -1,0 +1,17 @@
+{% extends 'layouts/main.twig' %}
+{% block body %}
+
+    {% if error %}
+        <p style="margin-top: 50px; color: red;">{{ error }}</p>
+    {% else %}
+        {% for currency in currencies %}
+            <div style="width: 300px; margin: 50px auto">
+                Name: {{ currency.Name }}<br>
+                Nominal: {{ currency.Nominal }}<br>
+                Value: {{ currency.Value }}
+                <hr>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'layouts/home.twig' %}
+{% block body %}
+    <div style="width: 600px; margin: auto;text-align: center">
+        <h2 style="">Авторизация</h2>
+        <div style="color: red">{{ form.error }}</div>
+        <form action="/" method="post">
+            <input type="text" placeholder="login" name="auth[login]" value="{{ form.login }}">
+            <input type="password" placeholder="password" name="auth[password]" value="{{ form.password }}">
+            <input type="submit" value="Войти">
+        </form>
+    </div>
+
+{% endblock %}

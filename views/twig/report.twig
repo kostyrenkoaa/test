@@ -1,0 +1,9 @@
+{% extends 'layouts/main.twig' %}
+{% block body %}
+
+    {% for log in logs %}
+        Дата: {{ log.data | date("d-m-Y") }}<br>
+        Сумма: {{ log.summ }} {{ log.currency }}<hr>
+    {% endfor %}
+
+{% endblock %}
